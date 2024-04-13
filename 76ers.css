@@ -120,7 +120,7 @@ body {
     padding: 0;
     font-family: Arial, sans-serif;
     background-color: #f3f3f3; /* Default background color */
-    background-image: url('basketball2.png'); /* Default background image */
+    background-image: url('../IMG/basketball2.png'); /* Default background image */
     background-size: 100%; /* Larger than the screen to zoom out */
     background-repeat: no-repeat;
     background-position: center center; /* Center the background image */
