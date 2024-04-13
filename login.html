@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="Login.css">
+    <title>Login - Philadelphia Sports History</title>
+    <style>
+        /* Additional CSS for dropdown */
+        #profile-section {
+            position: relative; /* Make it relative for absolute positioning of dropdown */
+        }
+
+        #profile-username {
+            display: inline-block;
+            padding: 8px 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #profile-username:hover {
+            background-color: #f2f2f2;
+        }
+
+        .dropdown {
+            position: absolute;
+            top: calc(100% + 5px); /* Position dropdown underneath username */
+            left: -50px; /* Adjust left position */
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            display: none;
+            min-width: 120px; /* Adjust dropdown width */
+        }
+
+        #profile-section:hover .dropdown {
+            display: block;
+        }
+
+        .dropdown a {
+            display: block;
+            padding: 8px 12px;
+            text-decoration: none;
+            color: #333;
+            transition: background-color 0.3s;
+        }
+
+        .dropdown a:hover {
+            background-color: #f2f2f2;
+        }
+
+        /* Additional styling for login page */
+      body {
+          font-family: Arial, sans-serif;
+          background-color: #f5f5f5; /* This will be covered by the image, but it's good to have a fallback color */
+          margin: 0;
+          padding: 0;
+          background-image: url('loginbg1234.png'); /* Add your image path here */
+          background-size: cover;
+          background-position: center center;
+          background-attachment: fixed;
+      }
+
+
+        header {
+            background-color: #008080;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 28px;
+        }
+
+        nav {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 10px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #555;
+        }
+
+        .logout-btn {
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .logout-btn:hover {
+            background-color: #2980b9;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        #login-section {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            margin: 0 auto;
+            margin-top: 60px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Philadelphia Sports History</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="#contact">Contact</a>
+            <div id="profile-section">
+                <span id="profile-username" onclick="toggleDropdown()">Username</span>
+                <div class="dropdown" id="profile-dropdown">
+                    <!-- Dropdown menu content -->
+                    <a href="#" onclick="logout()">Log Out</a>
+                    <a href="settings.html">Settings</a> <!-- Updated link -->
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="login-section">
+            <h2>Login/Sign Up</h2>
+            <div class="login-form" id="login-form">
+                <!-- Your login form content here -->
+                <label for="username">Username:</label>
+                <input type="text" id="login-username" name="username">
+                <label for="password">Password:</label>
+                <input type="password" id="login-password" name="password">
+                <button onclick="login()">Login</button>
+                <button onclick="signup()">Sign Up</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; James Pargamanik, Meru Parmar, Rob Workman </p>
+    </footer>
+
+    <script>
+        var profileDropdown = document.getElementById('profile-dropdown');
+
+        function toggleDropdown() {
+            profileDropdown.style.display = (profileDropdown.style.display === 'block') ? 'none' : 'block';
+        }
+
+        function logout() {
+            // Your logout logic here
+            localStorage.removeItem('loggedInUser');
+            alert('Logged out successfully!');
+            // Hide profile dropdown
+            profileDropdown.style.display = 'none';
+            // Show login form
+            document.getElementById('login-form').style.display = 'block';
+        }
+
+        function login() {
+            // Your login logic here
+            var username = document.getElementById('login-username').value;
+            // Perform authentication and remember the user using local storage
+            localStorage.setItem('loggedInUser', username);
+            alert('Login successful!');
+            // Update profile section
+            document.getElementById('profile-username').textContent = username;
+            document.getElementById('profile-section').style.display = 'inline-block';
+            // Hide login form
+            document.getElementById('login-form').style.display = 'none';
+        }
+
+        function signup() {
+            // Your signup logic here
+            var username = document.getElementById('login-username').value;
+            // Perform signup and remember the user using local storage
+            localStorage.setItem('loggedInUser', username);
+            alert('Sign Up successful!');
+            // Update profile section
+            document.getElementById('profile-username').textContent = username;
+            document.getElementById('profile-section').style.display = 'inline-block';
+            // Hide login form
+            document.getElementById('login-form').style.display = 'none';
+        }
+
+        // Check if user is logged in onload
+        window.onload = function () {
+            var loggedInUser = localStorage.getItem('loggedInUser');
+            if (loggedInUser) {
+                document.getElementById('profile-username').textContent = loggedInUser;
+                document.getElementById('profile-section').style.display = 'inline-block';
+                document.getElementById('login-form').style.display = 'none';
+            }
+        }
+    </script>
+
+</body>
+
+</html>

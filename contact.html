@@ -1,0 +1,238 @@
+f<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us - Contact Us</title>
+  <style>
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: url('boys.png') no-repeat center center fixed;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background-color: rgba(0, 107, 182, 0.8); /* Make the header background slightly transparent */
+      color: #fff;
+      text-align: center;
+      padding: 20px 0;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      background-color: rgba(237, 23, 76, 0.8); /* Make the nav button background slightly transparent */
+    }
+
+    nav a:hover {
+      background-color: #C4CED4;
+    }
+
+    h2 {
+      text-align: center;
+    }
+
+    .contact-form {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #f9f9f9;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      flex: 1 0 auto;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+
+    textarea {
+      height: 150px;
+    }
+
+    button {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      background-color: #006BB6;
+      color: #fff;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #00568c;
+    }
+
+    .contact-options {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .contact-options a {
+      color: #006BB6;
+      text-decoration: none;
+      margin: 0 10px;
+      border-radius: 5px;
+      background-color: #C4CED4;
+      padding: 10px 20px;
+      transition: background-color 0.3s;
+    }
+
+    .contact-options a:hover {
+      background-color: #00568c;
+      color: #fff;
+    }
+
+    .message-sent {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      z-index: 9999;
+      display: none;
+    }
+
+    footer {
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      padding: 20px 0;
+      margin-top: auto;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Philadelphia Sports History</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="eagles.html">Eagles</a>
+      <a href="phillies.html">Phillies</a>
+      <a href="76.html">76ers</a>
+      <a href="flyers.html">Flyers</a>
+      <a href="philadelphia-union.html">Philadelphia Union</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact Us</a>
+      <a href="login.html">Login/Signup</a>
+      <a href="maps.html">Maps</a>
+    </nav>
+  </header>
+
+  <h2>Contact Us</h2>
+  <div class="contact-form">
+    <form id="contactForm" action="#" method="POST" onsubmit="return sendMessage()">
+      <label for="name">Your Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="email">Your Email:</label>
+      <input type="email" id="email" name="email" required>
+      <label for="message">Message:</label>
+      <textarea id="message" name="message" required></textarea>
+      <button type="submit" id="sendMessageButton">Send Message</button>
+    </form>
+    <div id="requiredMessage" style="display: none; color: red;">All fields are required.</div>
+    <div id="messageSent" class="message-sent">
+      <p>Message Sent</p>
+    </div>
+  </div>
+
+  <div class="contact-options">
+    <p>Alternatively, you can:</p>
+    <button onclick="showPhoneNumber()">Call Us</button>
+    <button onclick="showEmail()">Send an Email</button>
+  </div>
+
+  <footer>
+    <p>&copy; James Pargamanik, Meru Parmar, Rob Workman</p>
+  </footer>
+
+  <div id="phoneNumber" class="message-sent" style="display: none;">
+    <p>Call Us at: 215-xxx-xxx9</p>
+    <span onclick="hidePhoneNumber()" style="position: absolute; top: 10px; right: 10px; cursor: pointer;">&#10006;</span>
+  </div>
+
+  <div id="emailAddress" class="message-sent" style="display: none;">
+    <p>Email Us at: phillysports@gmail.com</p>
+    <span onclick="hideEmail()" style="position: absolute; top: 10px; right: 10px; cursor: pointer;">&#10006;</span>
+  </div>
+
+  <script>
+    function sendMessage() {
+      var name = document.getElementById('name').value;
+      var email = document.getElementById('email').value;
+      var message = document.getElementById('message').value;
+
+      if (name === '' || email === '' || message === '') {
+        document.getElementById('requiredMessage').style.display = 'block';
+        return false;
+      } else {
+        document.getElementById('requiredMessage').style.display = 'none';
+        showMessageSent();
+        setTimeout(hideMessageSent, 3000);
+        return true;
+      }
+    }
+
+    function showMessageSent() {
+      document.getElementById('messageSent').style.display = 'block';
+    }
+
+    function hideMessageSent() {
+      document.getElementById('messageSent').style.display = 'none';
+    }
+
+    function showPhoneNumber() {
+      document.getElementById('phoneNumber').style.display = 'block';
+    }
+
+    function hidePhoneNumber() {
+      document.getElementById('phoneNumber').style.display = 'none';
+    }
+
+    function showEmail() {
+      document.getElementById('emailAddress').style.display = 'block';
+    }
+
+    function hideEmail() {
+      document.getElementById('emailAddress').style.display = 'none';
+    }
+  </script>
+</body>
+
+</html>

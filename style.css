@@ -1,0 +1,259 @@
+/* Global styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #bdffd5; /* Deep red background color */
+    color: #333; /* Dark text color */
+    overflow-x: hidden;
+}
+
+header {
+    background-color: #008080; /* Updated to teal background color */
+    padding: 10px 0;
+    text-align: center;
+    position: relative;
+    color: #fff; /* White text color */
+}
+
+header h1 {
+    margin: 0;
+    font-size: 28px;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    background-color: #008080; /* Updated to teal background color */
+    padding: 10px 0;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
+}
+
+nav a {
+    color: #fff; /* White text for contrast */
+    text-decoration: none;
+    padding: 10px 20px;
+    margin: 0 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+nav a:hover {
+    background-color: #17d3d3; /* A darker shade of teal for hover effect */
+  
+}
+.logo {
+    position: absolute;
+    top: 0;
+    width: 50px; /* Adjust the width as needed */
+    height: auto; /* Maintain aspect ratio */
+  z-index: 1000; /* Ensure the logo is in front of the header */
+}
+
+/* Logo positioning */
+.logo {
+    position: absolute;
+    top: 0;
+}
+
+.left {
+    left: 0;
+}
+
+.right {
+    right: 0;
+}
+
+.top-bar-info {
+    background-color: #32708f; /* Darker shade for glass effect on top bar */
+    color: #fff;
+    padding: 5px 0;
+    text-align: center;
+}
+
+.main-content {
+    padding: 20px;
+    margin-bottom: 60px;
+}
+
+.timeline-container {
+    margin: 50px auto 0 auto;
+}
+
+.timeline {
+    width: 2350%;
+    display: flex;
+    position: relative;
+    animation: scrollTimeline 55s linear infinite;
+    perspective: 1000px;
+}
+
+.line {
+    height: 20px;
+    background-color: #11c8a9;
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.event {
+    margin: 0 2%;
+    position: relative;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    overflow: hidden;
+}
+
+.event img {
+    max-width: 100%;
+    margin-top: 10px;
+}
+
+@keyframes scrollTimeline {
+    0% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(-40%);
+    }
+}
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #bdffd5; /* Light green background */
+    color: #333; /* Dark text color */
+    overflow-x: hidden;
+    /* Adjust padding-top based on the total height of the header and schedule container */
+    padding-top: 120px; /* Adjust this value as needed */
+}
+
+header {
+    background-color: #008080; /* Teal background */
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px 0;
+    flex-wrap: wrap;
+}
+
+/* For screens smaller than 600px */
+@media only screen and (max-width: 600px) {
+  /* CSS rules here will apply to screens smaller than 600px */
+  body {
+    font-size: 14px;
+  }
+}
+
+
+.schedule-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px; /* Reduce gap to save space */
+    position: fixed;
+    top: 35px; /* Adjust based on the actual height of your header */
+    left: 0;
+    width: 100%;
+    padding: 2px 0; /* Reduce vertical padding to minimize height */
+    background-color: rgba(255, 255, 255, 0.9);
+    z-index: 999;
+    overflow-x: auto;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.game-schedule {
+    padding: 10px;
+    width: 150px;
+    font-size: 1em;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.team-logo {
+    width: 20px;
+    height: auto;
+    margin: 0 5px;
+}
+
+
+/* Custom styles for other sections as needed */
+.Images {
+    display: flex;
+}
+
+.Images img {
+    flex: 1;
+    max-width: 50%; /* Adjust the percentage as needed */
+}
+
+.image-text {
+    flex: 1;
+    padding: 0 20px; /* Add padding for spacing between image and text */
+}
+
+.image-text img {
+    width: 300px; /* Adjusted width */
+    height: auto;
+    display: block; /* Center the image */
+    margin: 20px auto; /* Add space around the image */
+}
+
+.first {
+    margin: 0 5em;
+}
+
+.description p {
+    font-size: 16px; /* Adjust font size */
+    line-height: 1.6; /* Adjust line height for better readability */
+}
+body {
+  background-color: #fff; /* Set your initial background color */
+  transition: background-color 0.5s ease-in-out; /* Set fade transition */
+}
+
+.black-background {
+  position: fixed; /* Ensures background stays in place */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 0; /* Initially hidden */
+  transition: opacity 0.5s ease-in-out; /* Set fade transition */
+}
+

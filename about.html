@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-image: url('beer101.png'); /* Updated background image URL */
+      background-size: cover;
+      background-position: center;
+      color: dark;
+    }
+    header {
+      background-color: rgba(0, 128, 128, 0.8); /* Semi-transparent background */
+      color: white;
+      text-align: center;
+      padding: 5px 0; /* Adjusted padding */
+      margin-top: 0; /* Removed margin-top */
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 10px;
+      align-items: center; /* Align items vertically */
+    }
+    nav a {
+      color: white; /* Change text color */
+      text-decoration: none;
+      padding: 5px 10px; /* Adjusted padding */
+      border-radius: 5px;
+      background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent background */
+    }
+    nav a:hover {
+      background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent background on hover */
+      color: black; /* Change text color on hover */
+    }
+    h2 {
+      text-align: center;
+    }
+    .Images {
+      text-align: center;
+    }
+    .image-text {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    footer {
+      position: fixed; /* Make the footer fixed */
+      bottom: 0; /* Stick it to the bottom */
+      background-color: rgba(51, 51, 51, 0.8); /* Semi-transparent background */
+      color: #fff;
+      text-align: center;
+      padding: 20px 0;
+      width: 100%; /* Ensure it takes full width */
+    }
+    /* Dropdown styling */
+    .dropdown {
+      position: relative;
+      display: none; /* Hide by default */
+    }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      min-width: 120px;
+      box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+      z-index: 1;
+    }
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+    .dropdown-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+    .dropdown-content a:hover {
+      background-color: #f1f1f1;
+    }
+    .description {
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent background */
+      margin: 0 auto;
+      max-width: 800px;
+      text-align: center;
+    }
+    .copyright {
+      font-weight: bold;
+      font-size: larger;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>About Us</h1>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="eagles.html">Eagles</a>
+    <a href="76.html">76ers</a>
+    <a href="phillies.html">Phillies</a>
+    <a href="philadelphia-union.html">Philadelphia Union</a>
+    <a href="flyers.html">Flyers</a>
+    <a href="contact.html">Contact Us</a>
+    <div class="dropdown" id="profile-section">
+      <a id="profile-username"></a> <!-- Removed default 'Username' text -->
+      <div class="dropdown-content" id="profile-dropdown">
+        <a href="#" onclick="logout()">Logout</a>
+        <a href="settings.html">Settings</a>
+      </div>
+    </div>
+    <a href="login.html" id="login-btn">Login/Signup</a>
+  </nav>
+</header>
+
+<div class="description">
+  <p>
+  Learn more about our organization and our mission to celebrate Philadelphia's sports legacy.
+
+  We are passionate about preserving and sharing the rich history of sports in Philadelphia. Our organization was founded with the goal of honoring the achievements, stories, and iconic moments that have shaped the city's sporting culture.
+
+  Through our website, we aim to provide a comprehensive resource for fans, historians, and anyone interested in exploring the vibrant sports history of Philadelphia. From championship victories to legendary athletes, we cover it all.
+
+  Join us in reliving the unforgettable moments that have defined Philadelphia sports over the years. Whether you're a die-hard fan or a newcomer to the city, there's something for everyone as we take a journey through the milestones and memories that make Philadelphia a true sports city.</p>
+
+  <p>
+    <span class="copyright">Copyrights</span><br>
+    <ul>
+      <li>MrLegend - Youtube Channel</li>
+      <li>ESPN - <a href="www.espn.com">www.espn.com</a></li>
+      <li>ChatGPT</li>
+      <li>CoPilot</li>
+    </ul>
+  </p>
+</div>
+
+<footer>
+  <p>&copy; James Pargamanik, Meru Parmar, Rob Workman</p>
+</footer>
+
+<script>
+  function logout() {
+    // Clear local storage
+    localStorage.removeItem('loggedInUser');
+    // Hide profile section
+    document.getElementById('profile-section').style.display = 'none';
+    // Show login button
+    document.getElementById('login-btn').style.display = 'inline-block';
+  }
+
+  window.onload = function() {
+    // Check if user is logged in
+    var loggedInUser = localStorage.getItem('loggedInUser');
+    if (loggedInUser) {
+      // Show profile section with username
+      document.getElementById('profile-username').textContent = loggedInUser;
+      document.getElementById('profile-section').style.display = 'inline-block';
+      // Hide login button
+      document.getElementById('login-btn').style.display = 'none';
+      // Automatically logout after 3 seconds of inactivity
+      var timeout;
+      document.getElementById('profile-section').addEventListener('mouseenter', function() {
+        clearTimeout(timeout);
+      });
+      document.getElementById('profile-section').addEventListener('mouseleave', function() {
+        timeout = setTimeout(logout, 3000);
+      });
+    }
+  };
+</script>
+</body>
+</html>

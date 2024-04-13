@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Philadelphia 76ers</title>
+    <style>
+          body {
+              margin: 0;
+              padding: 0;
+              font-family: Arial, sans-serif;
+              background-color: #f3f3f3; /* Default background color */
+              background-image: url('basketball2.png'); /* Default background image */
+              background-size: contain; /* Adjusted to contain the entire image */
+              background-repeat: no-repeat;
+              overflow-y: auto; /* Enable vertical scrolling */  
+          }
+
+        }
+
+        header {
+            background-color: rgba(232, 24, 40, 0.5); /* Semi-transparent red */
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 10px;
+        }
+
+        nav a,
+        #profile-section a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            background-color: #002D72;
+            display: inline-flex; /* Ensure alignment with other nav links */
+            align-items: center;
+            justify-content: center;
+        }
+
+        nav a:hover,
+        #profile-section a:hover {
+            background-color: #FFFFFF;
+            color: #000000; /* Change text color to black on hover */
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            border-radius: 5px;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+      footer {
+        position: fixed; /* Make the footer fixed */
+        bottom: 0; /* Stick it to the bottom */
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        padding: 20px 0;
+        width: 100%; /* Ensure it takes full width */
+        display: none; /* Initially hide the footer */
+      }
+      #copyright {
+          background-color: #333; /* Grey background color */
+          color: #fff; /* Text color */
+          padding: 10px;
+          position: fixed;
+          bottom: 0;
+          width: 100%;
+          left: 0;
+          display: none; /* Initially hiding */
+      }
+
+        .custom-section {
+            background-color: rgba(128, 128, 128, 0.5); /* Semi-transparent grey background */
+            padding: 20px;
+            width: 80%;
+            max-width: 600px; /* Adjust the maximum width as per your requirement */
+            margin: 20px auto; /* Center the section */
+            border-radius: 15px; /* Rounded corners */
+        }
+
+        .custom-section-content {
+            /* Add your custom section content styles here */
+        }
+
+      .description {
+        background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent white */
+        border-radius: 15px; /* Rounded corners */
+        padding: 20px;
+        width: 80%;
+        max-width: 600px; /* Adjust the maximum width as per your requirement */
+        margin: 50px auto; /* Center the box */
+      }
+      .76er-image {
+          width: 100%; /* Set the width to 100% for responsive images */
+          height: auto; /* Maintain aspect ratio */
+          max-width: 500px; /* Set the maximum width */
+          display: block; /* Ensure images are displayed as blocks */
+          margin: 20px auto; /* Center images horizontally with some spacing */
+      }
+    </style>
+</head>
+
+<body>
+    <header>
+       <link rel="stylesheet" href="76ers.css">
+        <h1>Philadelphia 76ers</h1>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="eagles.html">Eagles</a>
+            <a href="phillies.html">Phillies</a>
+            <a href="flyers.html">Flyers</a>
+            <a href="philadelphia-union.html">Philadelphia Union</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact Us</a>
+          <a href='https://www.ticketmaster.com/philadelphia-76ers-tickets/artist/805998'">Tickets</a>
+
+            <div class="dropdown" id="profile-section" style="display: none;">
+                <a id="profile-username">Username</a>
+                <div class="dropdown-content" id="profile-dropdown">
+                    <a href="#" onclick="logout()">Logout</a>
+                    <a href="settings.html">Settings</a>
+                </div>
+            </div>
+            <a href="login.html" id="login-btn">Login/Signup</a>
+            <script>
+                function logout() {
+                    // Clear local storage
+                    localStorage.removeItem('loggedInUser');
+                    // Hide profile section
+                    document.getElementById('profile-section').style.display = 'none';
+                    // Show login button
+                    document.getElementById('login-btn').style.display = 'inline-block';
+                }
+
+                window.onload = function () {
+                    // Check if user is logged in
+                    var loggedInUser = localStorage.getItem('loggedInUser');
+                    if (loggedInUser) {
+                        // Show profile section with username
+                        document.getElementById('profile-username').textContent = loggedInUser;
+                        document.getElementById('profile-section').style.display = 'inline-block';
+                        // Hide login button
+                        document.getElementById('login-btn').style.display = 'none';
+                        // Automatically logout after 3 seconds of inactivity
+                        var timeout;
+                        document.getElementById('profile-section').addEventListener('mouseenter', function () {
+                            clearTimeout(timeout);
+                        });
+                        document.getElementById('profile-section').addEventListener('mouseleave', function () {
+                            timeout = setTimeout(logout, 3000);
+                        });
+                    }
+                };
+
+
+            </script>
+
+        </nav>
+    </header>
+  <div class="description">
+    <h2>City of Brotherly Love Reborn: The 76ers Rise to Challenge</h2>
+    <p>In the heart of Philadelphia, where the echoes of the crowd reverberate through the rafters of the Wells Fargo Center, the Philadelphia 76ers embarked on a captivating journey in the latest NBA season. Fueled by passion and driven by determination, they navigated the highs and lows of professional basketball, leaving an indelible mark on the sport's landscape.
+
+      Triumphs and Trials:
+      The 76ers' journey through the 2023-2024 NBA season was a rollercoaster of triumphs and trials, a testament to their resilience and unyielding spirit. Under the leadership of Head Coach Doc Rivers, they faced formidable opponents with unwavering resolve, refusing to succumb to adversity. From thrilling buzzer-beaters to hard-fought battles on the road, every game was a testament to their character and determination.
+
+      
+      Dynamic Playmaking:
+      At the heart of the 76ers' success was their dynamic playmaking on the court. All-Star point guard Ben Simmons orchestrated the offense with poise and precision, threading the needle with pinpoint passes and driving to the basket with authority. His ability to control the tempo of the game and create scoring opportunities for his teammates was instrumental in the team's success.
+
+       <a href="img" target="_blank"><img src="img" alt="" class="76er-image"></a>
+
+      Dominant Presence in the Paint:
+      In the paint, the 76ers boasted a dominant frontcourt led by MVP candidate Joel Embiid. Embiid's combination of size, skill, and versatility made him a nightmare for opposing defenses, as he punished them with a lethal mix of post moves, mid-range jumpers, and thunderous dunks. Alongside defensive stalwart Tobias Harris, the 76ers controlled the boards and protected the rim with authority.
+
+       <a href="img" target="_blank"><img src="img" alt="" class="76er-image"></a>
+
+      Lockdown Defense:
+      Behind every successful team lies a suffocating defense, and the 76ers were no exception. Defensive Player of the Year candidate Matisse Thybulle anchored the perimeter with his tenacious on-ball defense and uncanny ability to disrupt passing lanes. Alongside him, veteran presence Danny Green provided invaluable leadership and defensive IQ, while the shot-blocking prowess of Andre Drummond deterred even the most fearless attackers.
+
+       <a href="img" target="_blank"><img src="img" alt="" class="76er-image"></a>
+
+      Emerging Talents Shine:
+      While seasoned veterans led the charge, the 76ers also witnessed the emergence of young talents eager to leave their mark on the NBA stage. Rising stars like Tyrese Maxey and Shake Milton seized the opportunity to shine, showcasing their scoring prowess and playmaking abilities off the bench. Their energy and enthusiasm injected new life into the team, adding depth and versatility to the roster.
+
+       <a href="img" target="_blank"><img src="img" alt="" class="76er-image"></a>
+
+      Unforgettable Moments:
+      The 76ers' journey was punctuated by unforgettable moments that will be etched into the memories of fans for years to come. From thrilling overtime victories to statement wins against conference rivals, each triumph was a celebration of the team's unwavering commitment to excellence and determination to bring a championship back to Philadelphia.
+
+       <a href="img" target="_blank"><img src="img" alt="" class="76er-image"></a>
+
+      Looking Ahead:
+      As the season draws to a close, the Philadelphia 76ers stand on the brink of a new era. With a talented roster, a proven coaching staff, and a passionate fan base rallying behind them, they are poised to build on their success and chase championship glory in the seasons to come. For 76ers faithful everywhere, the future brims with excitement and promise, a testament to the enduring spirit of basketball in the City of Brotherly Love 
+    </p>
+
+
+    <footer id="copyright">
+      <p>&copy; James Pargamanik, Meru Parmar, Rob Workman</p>
+    </footer>
+
+    <script>
+      // Show footer when scroll reaches bottom
+      window.onscroll = function () {
+          var d = document.documentElement;
+          var offset = d.scrollTop + window.innerHeight;
+          var height = d.offsetHeight;
+
+          if (offset >= height) {
+              document.querySelector("footer").style.display = "block";
+          } else {
+              document.querySelector("footer").style.display = "none";
+          }
+      };
+    </script>
+</body>
+
+</html>

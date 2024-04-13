@@ -1,0 +1,109 @@
+body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+  }
+
+  header {
+      background-color: #004C54;
+    color: darkgreen;
+    text-align: center;
+    padding: 10px 0;
+}
+
+h1 {
+    margin-top: 1px;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+    position: relative; /* Make the parent container relative */
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    background-color: #A5ACAF;
+}
+
+nav a.roster-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+nav a:hover {
+    background-color: #000000;
+}
+
+h2 {
+    text-align: center;
+}
+
+.Images {
+    text-align: center;
+}
+
+.image-text {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+}
+
+/* Dropdown styling */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 120px;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+/* Adjusted image size */
+#eagles {
+    max-width: 45%;
+    height: auto;
+}
+
+.description {
+    text-align: center; /* Center align the paragraph text */
+}
+
+.description p {
+    font-size: 18px; /* Increase the font size of the paragraph text */
+    margin: 0 auto; /* Center the paragraph text horizontally */
+    max-width: 800px; /* Limit the maximum width of the paragraph */
+    padding: 0 20px; /* Add padding for better readability */
+}

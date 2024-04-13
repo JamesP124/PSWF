@@ -1,0 +1,137 @@
+/* Reset default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f2f2f2; /* Light background color */
+    color: #333; /* Dark text color */
+    overflow-x: hidden;
+}
+
+/* Header styles */
+header {
+    background-color: #808080; /* Cool mint blue header background color */
+    padding: 20px;
+    text-align: center;
+    color: #fff; /* White text color */
+    position: fixed; /* Fix the header at the top */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* Ensure header is above other elements */
+}
+
+header h1 {
+    margin: 0;
+    font-size: 28px;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* Decreased gap between buttons */
+    margin-top: 10px; /* Adjusted margin */
+}
+
+nav a {
+    color: #000000;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    background-color: #808080; /* Cool mint blue color */
+}
+
+nav a:hover {
+    background-color: #363737; /* Darker shade on hover */
+}
+
+/* Button styles for logged in state */
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    background-color: #3498db; /* Blue background color */
+    color: #fff; /* White text color */
+}
+
+.button:hover {
+    background-color: #2980b9; /* Darker shade on hover */
+}
+
+/* Footer styles */
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    position: fixed; /* Fix the footer at the bottom */
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+/* Center login box */
+.login-form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Spacing between login and sign up buttons */
+.login-form button {
+    margin-top: 10px; /* Adjust spacing as needed */
+    margin-right: 10px; /* Added margin between buttons */
+}
+
+/* Ensure profile section is visually aligned with other buttons */
+#profile-section {
+    display: flex;
+    align-items: center;
+}
+
+#profile-username {
+    margin-right: 10px; /* Add some space between username and log out button */
+}
+
+#profile-section button {
+    margin-left: auto; /* Push log out button to the right */
+    background-color: transparent; /* Make the log out button transparent */
+    color: #fff; /* Set text color to white */
+    border: none;
+    cursor: pointer;
+    transition: color 0.3s; /* Add transition effect */
+}
+
+#profile-section button:hover {
+    color: #f1c40f; /* Change text color on hover */
+}
+
+#profile-section .dropdown {
+    position: absolute;
+    background-color: #1abc9c; /* Cool mint blue dropdown background color */
+    border-radius: 5px;
+    padding: 10px;
+    top: 100%;
+    right: 0;
+    display: none;
+}
+
+#profile-section:hover .dropdown {
+    display: block; /* Show dropdown on hover */
+}

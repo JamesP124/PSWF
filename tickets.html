@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Philadelphia Sports Tickets</title>
+  <link rel="stylesheet" href="tickets.css"> <!-- Link to your CSS file -->
+  <style>
+    /* Additional styles */
+    footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background-color: #00417b;
+      color: #fff;
+      text-align: center;
+      padding: 10px 0;
+      transition: opacity 0.3s ease;
+      opacity: 0;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+        background-image: url('ticket.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+
+    footer.show {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1 style="text-align: center;">Philadelphia Sports Tickets</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="eagles.html">Eagles</a>
+      <a href="76.html">76ers</a>
+      <a href="flyers.html">Flyers</a>
+      <a href="philadelphia-union.html">Philadelphia Union</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact Us</a>
+      <!-- Dropdown for profile and logout -->
+      <div class="dropdown" id="profile-section" style="display: none;">
+        <a href="javascript:void(0)" id="profile-username">Profile</a>
+        <div class="dropdown-content">
+          <a href="javascript:void(0)" onclick="logout()">Logout</a>
+          <a href="settings.html">Settings</a>
+        </div>
+      </div>
+      <a href="login.html" id="login-btn">Login/Signup</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="ticket-section">
+      <h2>Buy Tickets</h2>
+      <div class="ticket-container">
+        <div class="ticket">
+          <h3>Philadelphia Eagles</h3>
+          <p>Buy tickets for upcoming Eagles games.</p>
+          <a href="https://www.ticketmaster.com/philadelphia-eagles-tickets/artist/805999" class="buy-btn">Buy Tickets</a>
+        </div>
+        <div class="ticket">
+          <h3>Philadelphia 76ers</h3>
+          <p>Buy tickets for upcoming 76ers games.</p>
+          <a href="https://www.ticketmaster.com/philadelphia-76ers-tickets/artist/805998" class="buy-btn">Buy Tickets</a>
+        </div>
+        <div class="ticket">
+          <h3>Philadelphia Flyers</h3>
+          <p>Buy tickets for upcoming Flyers games.</p>
+          <a href="https://www.ticketmaster.com/philadelphia-flyers-tickets/artist/806000" class="buy-btn">Buy Tickets</a>
+        </div>
+        <div class="ticket">
+          <h3>Philadelphia Union</h3>
+          <p>Buy tickets for upcoming Philadelphia Union games.</p>
+          <a href="https://www.ticketmaster.com/philadelphia-union-tickets/artist/1418418" class="buy-btn">Buy Tickets</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="calendar-section">
+      <h2>Game Schedule</h2>
+      <div id="calendar"></div> <!-- Placeholder for calendar -->
+    </section>
+  </main>
+
+  <footer id="footer">
+    <p>&copy; 2024 Philadelphia Sports Tickets</p>
+  </footer>
+
+  <script src="script.js"></script> <!-- Link to your JavaScript file -->
+  <script>
+    // Show footer when scrolling to the bottom of the page
+    window.onscroll = function() {
+      var d = document.documentElement;
+      var offset = d.scrollTop + window.innerHeight;
+      var height = d.offsetHeight;
+
+      if (offset >= height) {
+        document.getElementById("footer").classList.add("show");
+      } else {
+        document.getElementById("footer").classList.remove("show");
+      }
+    };
+  </script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4; /* Light grey background for slight contrast */
+    display: flex;
+}
+
+.sidebar {
+    width: 300px; /* Adjustable based on content */
+    background-color: #fff;
+    padding: 20px;
+    height: 100vh; /* Full height */
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+}
+
+#map {
+    flex-grow: 1;
+    height: 100vh; /* Full height */
+}
+
+header {
+    background-color: #4CAF50; /* A softer green */
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Adds depth */
+}
+
+nav, .location-features {
+    margin-bottom: 20px;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 8px 12px; /* Adjusted padding for a bit smaller buttons */
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.2s;
+    margin: 0 5px; /* Adjusted margin for better spacing */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    border: 1px solid #fff; /* White border for the buttons */
+    display: block; /* Ensure links are stacked */
+    background-color: #333; /* Navbar color */
+    text-align: center; /* Ensures text is centered */
+}
+
+nav a:hover {
+    background-color: #4CAF50;
+    transform: scale(1.05);
+}
+
+#profile-section, .dropdown a {
+    display: inline-block;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.2s;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+#profile-username:hover, .dropdown a:hover {
+    background-color: #f2f2f2;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.dropdown {
+    position: absolute;
+    top: calc(100% + 5px);
+    left: 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    display: none;
+    min-width: 120px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+#profile-section:hover .dropdown {
+    display: block;
+}
+
+.clock {
+    font-size: 18px;
+    margin: 20px 0;
+    padding: 10px;
+    background: #e8e8e8;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.location-features {
+    flex-grow: 1;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    #map {
+        height: 400px; /* Fixed height for smaller screens */
+        order: -1; /* Map comes first */
+    }
+}

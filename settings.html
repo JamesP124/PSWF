@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - Philadelphia Sports History</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar {
+            background-color: #ccc;
+            text-align: center;
+            padding: 10px 0;
+            margin: 0;
+            width: 100%;
+        }
+        .navbar a {
+            text-decoration: none;
+            color: black;
+            margin: 0 10px;
+            padding: 8px 16px;
+            background-color: #f5f5f5;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .navbar a:hover {
+            background-color: #ddd;
+        }
+        header {
+            background-color: #ccc;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+        header h1 {
+            margin: 0;
+            margin-left: auto;
+        }
+        .settings-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 20px auto;
+        }
+        .settings-header {
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        .settings-section {
+            text-align: center;
+        }
+        .settings-option {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            text-align: center;
+        }
+        input[type="text"], .settings-button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+        .settings-button {
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .settings-button:hover {
+            background-color: #45a049;
+        }
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+        .switch input { 
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+        }
+        input:checked + .slider {
+            background-color: #2196F3;
+        }
+        input:focus + .slider {
+            box-shadow: 0 0 1px #2196F3;
+        }
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+        .slider.round {
+            border-radius: 34px;
+        }
+        .slider.round:before {
+            border-radius: 50%;
+        }
+        .modal, .premium-modal {
+            display: none;
+            position: fixed;
+            z-index: 2;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+            backdrop-filter: blur(5px);
+        }
+        .modal-content, .premium-modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 40%;
+            border-radius: 10px;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .payment-option {
+            margin: 10px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .payment-button {
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            cursor: pointer;
+        }
+        .payment-button:hover {
+            background-color: #f0f0f0;
+        }
+      body {
+          font-family: Arial, sans-serif;
+          background-color: #f5f5f5;
+          margin: 0;
+          padding: 0;
+          display: flex;
+          flex-direction: column;
+          min-height: 100vh; /* Ensure the footer sticks to the bottom */
+      }
+
+      /* Your existing styles for other elements */
+
+      footer {
+          background-color: #ccc;
+          text-align: center;
+          padding: 10px 0;
+          font-size: 14px;
+          margin-top: auto; /* Push the footer to the bottom */
+      }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="navbar">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="#contact">Contact</a>
+    </div>
+    <h1>Settings</h1>
+</header>
+
+<main>
+    <div class="settings-container">
+        <div class="settings-header">Settings</div>
+
+        <div class="settings-section">
+            <h2>General Information</h2>
+            <div class="settings-option">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" value="">
+            </div>
+            <button class="settings-button" onclick="updateUsername()">Update Username</button>
+        </div>
+
+        <div class="settings-section">
+            <h2>Privacy Settings</h2>
+            <div class="settings-option">
+                <label for="enablePrivacy">Enable Data Collection</label>
+                <label class="switch">
+                  <input type="checkbox" id="enablePrivacy">
+                  <span class="slider round"></span>
+                </label>
+            </div>
+        </div>
+
+        <div class="settings-section">
+            <h2>Ad Settings</h2>
+            <div class="settings-option">
+                <button class="settings-button" onclick="requirePremium()">Turn Off Ads</button>
+            </div>
+        </div>
+
+        <div class="settings-section">
+            <h2>Monthly Subscription</h2>
+            <div class="settings-option">
+                <button class="settings-button" id="subscribePremium">Upgrade to Premium</button>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <div style="background-color: #f5f5f5; padding: 20px;">
+        <p>&copy; James Pargamanik, Meru Parmar, Rob Workman</p>
+    </div>
+</footer>
+
+<!-- Premium Requirement Modal -->
+<div id="premiumRequirementModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <p>This feature requires a premium subscription. Please upgrade to premium to use this feature.</p>
+    </div>
+</div>
+
+<!-- Upgrade to Premium Modal -->
+<div id="upgradeToPremiumModal" class="premium-modal">
+    <div class="premium-modal-content">
+        <span class="close">&times;</span>
+        <h2>Upgrade to Premium</h2>
+        <div class="payment-option">
+            <span>Credit Card</span>
+            <button class="payment-button">Select</button>
+        </div>
+        <div class="payment-option">
+            <span>Apple Pay</span>
+            <button class="payment-button">Select</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Handle opening and closing of the premium requirement modal
+    var premiumModal = document.getElementById('premiumRequirementModal');
+    var closeBtns = document.querySelectorAll('.close');
+
+    function requirePremium() {
+        premiumModal.style.display = "block";
+    }
+
+    closeBtns.forEach(btn => {
+        btn.onclick = function() {
+            premiumModal.style.display = "none";
+            document.getElementById('upgradeToPremiumModal').style.display = "none";
+        }
+    });
+
+    window.onclick = function(event) {
+        if (event.target == premiumModal || event.target == document.getElementById('upgradeToPremiumModal')) {
+            premiumModal.style.display = "none";
+            document.getElementById('upgradeToPremiumModal').style.display = "none";
+        }
+    }
+
+    // Handle Upgrade to Premium button click
+    document.getElementById('subscribePremium').onclick = function() {
+        document.getElementById('upgradeToPremiumModal').style.display = 'block';
+    }
+
+    // Mock function to update username (no actual functionality)
+    function updateUsername() {
+        alert("Username updated successfully!");
+    }
+</script>
+</body>
+</html>

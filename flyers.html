@@ -1,0 +1,139 @@
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="flyers.css">
+      <title>Flyers</title>
+      <style>
+          body {
+              margin: 0;
+              padding: 0;
+              background-image: url('rob101.png');
+              background-size: cover;
+              background-repeat: no-repeat;
+              background-attachment: fixed;
+          }
+
+          header {
+              background-color: rgba(247, 73, 2, 0.5); /* Adjust the transparency by changing the last value */
+              padding: 10px 0;
+          }
+
+          .transparent-box {
+              background-color: rgba(255, 255, 255, 0.7); /* Adjust the transparency by changing the last value */
+              border-radius: 15px; /* Adjust the border-radius to control the roundness of the edges */
+              padding: 20px;
+              width: 80%;
+              max-width: 600px; /* Adjust the maximum width as per your requirement */
+              margin: 50px auto; /* Adjust the margin for centering */
+          }
+
+          h2 {
+              text-align: center;
+          }
+
+          #copyright {
+              background-color: #ddd; /* Grey background color */
+              color: #333; /* Text color */
+              padding: 10px;
+              position: fixed;
+              bottom: 0;
+              width: 100%;
+              left: 0;
+              display: none; /* Initially hiding */
+          }
+        .Flyer-image {
+            width: 100%; /* Set the width to 100% for responsive images */
+            height: auto; /* Maintain aspect ratio */
+            max-width: 500px; /* Set the maximum width */
+            display: block; /* Ensure images are displayed as blocks */
+            margin: 20px auto; /* Center images horizontally with some spacing */
+        }
+      </style>
+  </head>
+
+  <body>
+
+<header>
+  <h1>Philadelphia Flyers</h1>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="eagles.html">Eagles</a>
+    <a href="76.html">76ers</a>
+    <a href="phillies.html">Phillies</a>
+    <a href="philadelphia-union.html">Philadelphia Union</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact Us</a>
+    <a href='https://www.ticketmaster.com/philadelphia-flyers-tickets/artist/806000'">Tickets</a>
+
+    
+    <div class="dropdown" id="profile-section" style="display: none;">
+      <a id="profile-username">Username</a>
+      <div class="dropdown-content" id="profile-dropdown">
+        <a href="#" onclick="logout()">Logout</a>
+        <a href="settings.html">Settings</a>
+      </div>
+    </div>
+    <a href="login.html" id="login-btn">Login/Signup</a>
+  </nav>
+</header>
+    <div class="transparent-box">
+      <h2>The Philadelphia Flyers' Epic Journey</h2>
+      <p>In the frosty heart of Philadelphia, where the roar of the crowd echoes through the hallowed halls of the Wells Fargo Center, the Philadelphia Flyers embarked on a gripping odyssey in the latest NHL season. With blades gliding effortlessly over the ice and determination burning bright in their eyes, they navigated the highs and lows of professional hockey, etching their names into the annals of sports history.
+
+      Triumphs and Tribulations:
+      The Flyers' journey through the 2023-2024 NHL season was a tale of triumphs and tribulations, a narrative woven with threads of resilience and grit. Led by Head Coach Alain Vigneault, they faced formidable opponents with unwavering resolve, refusing to be deterred by setbacks or challenges along the way.
+
+      Dynamic Offense:
+      On the offensive front, the Flyers boasted a lineup brimming with talent and firepower. Captain Claude Giroux, with his deft stickhandling and sniper-like accuracy, led the charge, inspiring his teammates with his leadership on and off the ice. Alongside Giroux, emerging stars like Joel Farabee and Cam Atkinson electrified fans with their speed and scoring prowess, injecting the Flyers' offense with a youthful exuberance that kept opponents on their toes.
+
+      
+        <a href="https://www.sportsnet.ca/wp-content/uploads/2018/10/Big-Read-Giroux-celebrates.jpg" target="_blank"><img src="https://www.sportsnet.ca/wp-content/uploads/2018/10/Big-Read-Giroux-celebrates.jpg" alt="Claude Giroux leading the team onto the ice, his eyes ablaze with determination" class="Flyer-image"></a>
+
+      Solid Defense:
+      Defensively, the Flyers stood tall, anchored by stalwarts like Ivan Provorov and Travis Sanheim. With their shot-blocking prowess and bone-crushing hits, they formed a formidable barrier in front of goaltender Carter Hart, thwarting opposing attacks with tenacity and skill. Hart, in particular, emerged as a beacon of hope between the pipes, showcasing a maturity beyond his years and earning the trust of his teammates with clutch saves when it mattered most.
+
+      
+        <a href="https://s3951.pcdn.co/wp-content/uploads/2022/10/Carter-Hart-Flyers-2.jpg" target="_blank"><img src="https://s3951.pcdn.co/wp-content/uploads/2022/10/Carter-Hart-Flyers-2.jpg" alt="Carter Hart making a spectacular save, stretching his body to deny a sure goal" class="Flyer-image"></a>
+
+      Rising Stars and Veteran Wisdom:
+      While seasoned veterans provided invaluable leadership, the Flyers also witnessed the emergence of rising stars eager to leave their mark on the NHL stage. Young talents like Morgan Frost and Wade Allison seized the opportunity to shine, displaying flashes of brilliance that hinted at a promising future for the franchise. Their energy and enthusiasm injected new life into the team, complementing the steady guidance of seasoned veterans like Sean Couturier and Kevin Hayes.
+
+      
+        <a href="https://cloudfront-us-east-1.images.arcpublishing.com/pmn/7N3MDRDQYFDOTCMNCYB5GHHAZA.jpg" target="_blank"><img src="https://cloudfront-us-east-1.images.arcpublishing.com/pmn/7N3MDRDQYFDOTCMNCYB5GHHAZA.jpg" alt="Morgan Frost celebrating a goal, his face illuminated with joy" class="Flyer-image"></a>
+
+      Unforgettable Moments and Historic Victories:
+      The Flyers' journey was punctuated by unforgettable moments and historic victories that will be etched into the memories of fans for years to come. From thrilling overtime wins that sent the Wells Fargo Center into a frenzy to hard-fought battles against division rivals, each victory served as a testament to the team's resilience and character.
+
+      One such moment came in a pivotal matchup against their bitter rivals, the Pittsburgh Penguins. Trailing by a goal late in the third period, the Flyers staged a dramatic comeback, capped off by a game-winning goal from Joel Farabee in the dying seconds of regulation. The roar of the crowd as the puck crossed the goal line echoed throughout the arena, a symphony of triumph and jubilation that encapsulated the spirit of Flyers hockey.
+
+
+        <a href="https://media.video-cdn.espn.com/motion/2024/0312/ss_20240312_215318860_2520850/ss_20240312_215318860_2520850.jpg" target="_blank"><img src="https://media.video-cdn.espn.com/motion/2024/0312/ss_20240312_215318860_2520850/ss_20240312_215318860_2520850.jpg" alt="Joel Farabee's game-winning goal celebration, his teammates mobbing him in joy" class="Flyer-image"></a>
+
+      Looking Ahead:
+      As the season draws to a close and the echoes of battles won and lost fade into memory, the Philadelphia Flyers stand poised on the brink of a new era. With a talented roster, a dedicated coaching staff, and a passionate fan base rallying behind them, they are primed to chase glory and write the next chapter in the storied history of one of hockey's most iconic franchises. For Flyers faithful everywhere, the future burns bright, a beacon of hope and promise in the City of Brotherly Love.</p>
+    </div>
+
+    <footer>
+        <p>&copy; James Pargamanik, Meru Parmar, Rob Workman</p>
+    </footer>
+
+    <script>
+      // Show footer when scroll reaches bottom
+      window.onscroll = function () {
+          var d = document.documentElement;
+          var offset = d.scrollTop + window.innerHeight;
+          var height = d.offsetHeight;
+
+          if (offset >= height) {
+              document.querySelector("footer").style.display = "block";
+          } else {
+              document.querySelector("footer").style.display = "none";
+          }
+      };
+    </script>
+    </body>
+
+    </html>

@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="Widget.css">
+  <style>
+    /* Add CSS for the fade-in effect */
+    .fade-in {
+      opacity: 2;
+      transition: opacity 2s ease-in-out;
+    }
+
+    /* Adjust the size of the images */
+    .Images img {
+      width: 10px;
+      height: auto;
+      /* Maintain aspect ratio */
+    }
+
+    /* Adjust the size of the Eagles image */
+    .event img {
+      width: 300px;
+      /* Set your preferred width */
+      height: auto;
+      /* Maintain aspect ratio */
+    }
+
+    /* Adjust the height of the timeline container */
+    .timeline-container {
+      max-height: 450px;
+      /* Set your preferred height */
+      overflow: hidden;
+    }
+
+    /* Adjust the styles to crop to the image size at the bottom with a subtle grid */
+    .timeline {
+      position: relative;
+    }
+
+    .timeline:before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 20px;
+      /* Adjust this value as needed */
+      background: repeating-linear-gradient(45deg, transparent, transparent 5px, #ccc 5px, #ccc 10px);
+    }
+
+    /* Adjust the background color of header and color of navigation links */
+    header {
+      background-color: #008080;
+      color: white;
+      padding: 10px;
+      text-align: center;
+      position: fixed;
+      /* Fixed position */
+      top: 0;
+      /* Stick to the top */
+      width: 100%;
+      /* Full width */
+      z-index: 1000;
+      /* Ensure it's above other content */
+    }
+
+    header nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    /* Adjust the button layout and color */
+    .button {
+      display: inline-block;
+      background-color: green;
+      color: white;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+      cursor: pointer;
+      /* Add cursor pointer */
+      margin-right: 10px;
+      /* Add margin between buttons */
+    }
+
+    .button:hover {
+      background-color: darkgreen;
+    }
+
+    footer {
+      background-color: #333;
+      color: white;
+      padding: 10px;
+      text-align: center;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+
+    /* Sliding widget */
+    .sliding-widget {
+      width: 100%;
+      /* Full width */
+      overflow: visible;
+      /* Allow overflow */
+      background-color: #f2f2f2;
+      /* Background color */
+      border-top: 1px solid #ccc;
+      /* Top border */
+      border-bottom: 1px solid #ccc;
+      /* Bottom border */
+      position: fixed;
+      /* Fixed position */
+      top: 60px;
+      /* Space below header */
+      z-index: 1000;
+      /* Ensure it's above other content */
+      transition: top 0.5s ease;
+      /* Smooth transition */
+    }
+
+    /* Widget content */
+    .widget-content {
+      display: flex;
+      justify-content: flex-start;
+      /* Start from left */
+      align-items: center;
+      /* Center vertically */
+      transition: transform 0.5s ease;
+      overflow-x: auto;
+      /* Horizontal scroll */
+      overflow-y: hidden;
+      /* Hide vertical scroll */
+      white-space: nowrap;
+      /* Prevent line breaks */
+      padding: 10px;
+      /* Add padding for spacing */
+    }
+
+    /* Individual score boxes */
+    .score-box {
+      padding: 20px;
+      box-sizing: border-box;
+      text-align: center;
+      background-color: #008080;
+      color: white;
+      margin: 0 10px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+      flex-shrink: 0;
+      /* Prevent shrinking */
+    }
+
+    /* Navigation arrows */
+    .prev,
+    .next {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      padding: 10px;
+      background-color: rgba(0, 0, 0, 0.5);
+      color: #fff;
+      font-size: 18px;
+      z-index: 1;
+    }
+
+    .prev {
+      left: 0;
+    }
+
+    .next {
+      right: 0;
+    }
+
+    /* Pull down the "About Us" section */
+    section.event {
+      margin-top: 80px;
+      /* Adjust as needed to push it down */
+    }
+
+    /* Cookie modal */
+    #cookieModal {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      background-color: black;
+      padding: 20px;
+      border: 2px solid white;
+      color: white;
+      border-radius: 10px;
+      box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.75);
+    }
+
+    #cookieModal .close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      color: white;
+      cursor: pointer;
+      font-size: 20px;
+    }
+
+    #cookieModal .close:hover {
+      color: yellow;
+    }
+
+    #cookieModal p {
+      margin-bottom: 20px;
+    }
+
+    #cookieModal button {
+      background-color: yellow;
+      color: black;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-right: 20px;
+      /* Increase margin between buttons */
+      transition: background-color 0.3s ease;
+    }
+
+    #cookieModal button:hover {
+      background-color: #ff0;
+    }
+  </style>
+  <title>Philadelphia Sports History</title>
+</head>
+
+<body>
+
+  <header>
+    <h1>Philadelphia Sports History</h1>
+    <img src="Logo36.webp" alt="Philadelphia Sports Logo" class="logo left">
+    <nav>
+      <a href="eagles.html">Eagles</a>
+      <a href="76.html">76ers</a>
+      <a href="phillies.html">Phillies</a>
+      <a href="flyers.html">Flyers</a>
+      <a href="philadelphia-union.html">Philadelphia Union</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact Us</a>
+      <a href="login.html">Login/Signup</a>
+      <a href="maps.html">Maps</a>
+      <a href="tickets.html">Tickets</a>
+    </nav>
+  </header>
+
+  << /head>
+
+    <body>
+
+      <div class="schedule-container">
+        <section class="game-schedule">
+          <div class="game-date">April 14, 2024</div>
+          <div class="teams">
+            <img src="76ers.png" alt="76ers" class="team-logo">
+            <span>PHI vs <img src="Nets.png" alt="Nets" class="team-logo"> BKN</span>
+          </div>
+          <div class="location">Home</div>
+        </section>
+
+        <section class="game-schedule">
+          <div class="game-date">April 14, 2024</div>
+          <div class="teams">
+            <img src="Union.png" alt="76ers" class="team-logo">
+            <span>PHI vs <img src="Atlanta.png" alt="LAL" class="team-logo"> ATU</span>
+          </div>
+          <div class="location">Away</div>
+        </section>
+
+        <section class="game-schedule">
+          <div class="game-date">April 13, 2024</div>
+          <div class="teams">
+            <img src="Flyers.png" alt="76ers" class="team-logo">
+            <span>PHI vs <img src="Devils.svg" alt="LAC" class="team-logo"> DVL</span>
+          </div>
+          <div class="location">Home</div>
+        </section>
+      </div>
+
+
+    </body>
+
+</html>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<!-- Styled the "About Us" section similar to other sections -->
+<section class="event" style="background-color: rgba(242, 242, 242, 0.5); padding: 20px;">
+  <div class="main-content">
+    <h2>About Us</h2>
+    <p>Learn more about our organization and our mission to celebrate Philadelphia's sports legacy.</p>
+    <p>We are passionate about preserving and sharing the rich history of sports in Philadelphia. Our organization was
+      founded with the goal of honoring the achievements, stories, and iconic moments that have shaped the city's
+      sporting culture.</p>
+    <p>Through our website, we aim to provide a comprehensive resource for fans, historians, and anyone interested in
+      exploring the vibrant sports history of Philadelphia. From championship victories to legendary athletes, we cover
+      it all.</p>
+    <p>Join us in reliving the unforgettable moments that have defined Philadelphia sports over the years. Whether
+      you're a die-hard fan or a newcomer to the city, there's something for everyone as we take a journey through the
+      milestones and memories that make Philadelphia a true sports city.</p>
+</section>
+
+
+    <div class="timeline-container">
+        <div class="timeline">
+            <div class="line"></div>
+
+            <!-- Example timeline events with adjusted size for the Eagles image -->
+            <section class="event" style="top: 5%;">
+                <h3>1948</h3>
+                <p>Eagles win NFL Superbowl</p>
+                <img src="https://goldenrankings.com/Football%20Pictures%202/NFL%20Championship%20Games/1948EaglesCardinals/1948%20Eagles.jpg" alt="Philadelphia Eagles winning NFL Championship in 1948" style="width: 300px;">
+            </section>
+            <section class="event" style="top: 5%;">
+                <h3>1949</h3>
+                <p>Eagles win NFL Superbowl</p>
+                <img src="https://goldenrankings.com/Football%20Pictures%202/NFL%20Championship%20Games/1949EaglesRams/1949%20NFL%20champion%20eagles.jpg" alt="Philadelphia Eagles winning NFL Championship in 1949" style="width: 300px;">
+            </section>
+            <section class="event" style="top: 5%;">
+                <h3>1955</h3>
+                <p>76ers NBA Championship Win</p>
+                <img src="https://cdn.nba.com/manage/2021/08/1954-55-syracuse-nationals.jpg" alt="76ers NBA Championship Win 1955" style="width: 300px;">
+            </section>
+            <section class="event" style="top: 5%;">
+                <h3>1960</h3>
+                <p>Eagles win NFL Superbowl</p>
+                <img src="https://m.media-amazon.com/images/I/51pGHOyGGuL._AC_UF1000,1000_QL80_.jpg" alt="Philadelphia Eagles winning NFL Championship in 1960" style="width: 300px;">
+            </section>
+            <section class="event" style="top: 5%;">
+                <h3>1967</h3>
+                <p>76ers NBA Championship Win</p>
+                <img src="https://nbahoopsonline.com/teams/Philadelphia76ers/photos/196776ers.jpg" alt="76ers NBA Championship Win 1967" style="width: 300px;">
+            </section>
+            <section class="event" style="top: 5%;">
+                <h3>1974</h3>
+                <p>Philadelphia Flyers Stanley Cup Win</p>
+                <img src="https://cdn-blog.scorum.com/production/zmiller82/9cb6e1fcb5a4404a_500" alt="Philadelphia Flyers Stanley Cup Win 1974" style="width: 300px;">
+            </section>
+            <section class="event" style="top: 5%;">
+                <h3>1975</h3>
+                <p>Philadelphia Flyers Stanley Cup Win</p>
+                <img src="https://nbahoopsonline.com/teams/Philadelphia76ers/photos/196776ers.jpg" alt="Philadelphia Flyers Stanley Cup Win 1975" style="width: 300px;">
+            </section>
+            <section class="event" style="top: 5%;">
+                <h3>1983</h3>
+                <p>76ers NBA Championship Win</p>
+                <img src="https://i.pinimg.com/originals/5c/1f/ec/5c1fecfbcb7de8114ad1bb6acad881e9.png" alt="76ers NBA Championship Win 1983" style="width: 300px;">
+            </section>
+            <section class="event" style="top: 5%;">
+                <h3>2017</h3>
+                <p>Eagles win NFL Superbowl</p>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiTB7dJpR5k_NHv9DeIuJA5lFL5MZcnf1UNQ&usqp=CAU" alt="Philadelphia Eagles winning NFL Championship in 2017" style="width: 300px;">
+            </section>
+            <!-- Add similar sections for other events with images -->
+
+        </div>
+    </div>
+
+
+<footer>
+  <p>&copy; James Pargamanik, Meru Parmar, Rob Workman </p>
+</footer>
+
+<!-- Cookie modal -->
+<div id="cookieModal">
+  <span class="close" onclick="closeModal()">&times;</span>
+  <p>This website uses cookies to ensure you get the best experience. Accept cookies to continue.</p>
+  <button onclick="acceptCookies()">Accept Cookies</button>
+  <button onclick="rejectCookies()">Reject Cookies</button>
+</div>
+
+<!-- JavaScript for widget functionality -->
+<script>
+  let currentIndex = 0;
+  const slides = document.querySelectorAll('.score-box');
+  const totalSlides = slides.length;
+
+  window.addEventListener('scroll', function () {
+    currentIndex = Math.floor((window.scrollY + window.innerHeight / 2) / window.innerHeight) % totalSlides;
+    const displacement = -currentIndex * 100;
+    document.getElementById('widgetContent').style.transform = `translateX(${displacement}%)`;
+  });
+</script>
+
+<!-- JavaScript for cookie modal -->
+<script>
+  // Check if the modal has been displayed before
+  if (!sessionStorage.getItem('cookieModalDisplayed')) {
+    document.getElementById('cookieModal').style.display = 'block';
+  }
+
+  // Function to close the modal
+  function closeModal() {
+    document.getElementById('cookieModal').style.display = 'none';
+    // Set flag indicating the modal has been displayed
+    sessionStorage.setItem('cookieModalDisplayed', true);
+  }
+
+  // Function to accept cookies
+  function acceptCookies() {
+    // Perform actions for accepting cookies here
+    console.log('Cookies accepted');
+    closeModal();
+  }
+
+  // Function to reject cookies
+  function rejectCookies() {
+    // Perform actions for rejecting cookies here
+    console.log('Cookies rejected');
+    closeModal();
+  }
+</script>
+
+<!-- Script for Google asking for notifications -->
+<script>
+  // Check if the notification permission has been asked before
+  if (!localStorage.getItem('notificationPermissionAsked')) {
+    // Ask for notification permission
+    Notification.requestPermission().then(permission => {
+      console.log('Notification permission:', permission);
+      localStorage.setItem('notificationPermissionAsked', true);
+    });
+  }
+</script>
+
+</body>
+
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body,
+    html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow-x: hidden;
+      /* Hide horizontal overflow */
+    }
+
+    .video-background {
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      z-index: -1;
+      /* Keep the video behind other elements */
+      overflow: hidden;
+      /* Hide overflow to prevent video overlapping the top navigation */
+    }
+
+    .video-background video {
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .top-nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: #333;
+      color: white;
+      z-index: 999;
+      /* Make sure the navigation stays on top of other content */
+      display: flex;
+      justify-content: space-around;
+      padding: 10px 0;
+    }
+
+    .content {
+      position: relative;
+      /* Needed for full height */
+      z-index: 1;
+      /* Content above the background video */
+      padding-top: 60px;
+      /* Space for the fixed top navigation */
+      height: 100%;
+      /* Make sure content fills available height */
+      overflow-y: auto;
+      /* Enable vertical scrolling if needed */
+    }
+  </style>
+</head>
+
+<body>
+
+
+
+  <!DOCTYPE html>
+  <html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      body,
+      html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow: auto;
+        /* Changed from 'hidden' to 'auto' to allow scrolling */
+      }
+
+      .video-background {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        z-index: -100;
+        background-size: cover;
+      }
+
+      .video-background iframe {
+        position: absolute;
+        top: -25%;
+        left: -25%;
+        width: 150%;
+        height: 150%;
+      }
+
+      .top-nav {
+        position: relative;
+        z-index: 10;
+        /* Increased z-index to ensure navigation is above other content */
+        background-color: rgba(0, 0, 0, 0.5);
+        padding: 10px;
+        text-align: center;
+      }
+
+      .top-nav a {
+        color: white;
+        padding: 14px 20px;
+        text-decoration: none;
+        font-size: 18px;
+      }
+
+      .content {
+        position: relative;
+        z-index: 10;
+        /* Increased z-index to ensure content is above the video background */
+        padding: 20px;
+        text-align: center;
+        min-height: 150vh;
+        /* Example to ensure there's enough content to scroll, adjust as needed */
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <style>
+      .video-background {
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        z-index: -100;
+        overflow: hidden;
+        background-size: cover;
+      }
+      iframe {
+        position: absolute;
+        top: -25%;
+        left: -25%;
+        width: 150%;
+        height: 150%;
+      }
+    </style>
+
+    <div class="video-background">
+        <iframe src="https://www.youtube.com/embed/QJjhnQ749Kc?autoplay=1&mute=1&loop=1&playlist=QJjhnQ749Kc&controls=0&modestbranding=1&rel=0&showinfo=0&start=12" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen></iframe>
+    </div>
+
+
+
+
+    <div class="content">
+      <p></p>
+      <style>
+        .background-container {
+          background-color: rgba(242, 242, 242, 0.5);
+        }
+      </style>
+      <!-- Add more content as needed to enable scrolling -->
+    </div>
+
+  </body>
+
+  </html> 
+  
