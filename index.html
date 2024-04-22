@@ -238,57 +238,33 @@
 </head>
 
 <body>
-
-  <header>
-    <h1>Philadelphia Sports History</h1>
-    <img src="../IMG/Logo36.webp" alt="Philadelphia Sports Logo" class="logo left">
+  <header id="header">
+    <h1>Philadelphia Sports</h1>
     <nav>
-      <a href="eagles.html">Eagles</a>
+     <a href="eagles.html">Eagles</a>
       <a href="76.html">76ers</a>
-      <a href="phillies.html">Phillies</a>
+       <a href="phillies.html">Phillies</a>
       <a href="flyers.html">Flyers</a>
       <a href="philadelphia-union.html">Philadelphia Union</a>
       <a href="about.html">About</a>
       <a href="contact.html">Contact Us</a>
-      <a href="login.html">Login/Signup</a>
-      <a href="maps.html">Maps</a>
-      <a href="tickets.html">Tickets</a>
+      <a href='https://www.ticketmaster.com/philadelphia-phillies-tickets/artist/806001'">Tickets</a>
+       <a href="maps.html">Maps</a>
+      <!-- Dropdown for profile and logout -->
+      <div class="dropdown" id="profile-section" style="display: none;">
+        <a href="javascript:void(0)" id="profile-username">Profile</a>
+        <div class="dropdown-content">
+          <a href="javascript:void(0)" onclick="logout()">Logout</a>
+          <a href="settings.html">Settings</a>
+        </div>
+      </div>
+      <a href="login.html" id="login-btn">Login/Signup</a>
     </nav>
   </header>
 
   << /head>
 
     <body>
-
-      <div class="schedule-container">
-        <section class="game-schedule">
-          <div class="game-date">April 14, 2024</div>
-          <div class="teams">
-            <img src="../IMG/76ers.png" alt="76ers" class="team-logo">
-            <span>PHI vs <img src="../IMG/Nets.png" alt="Nets" class="team-logo"> BKN</span>
-          </div>
-          <div class="location">Home</div>
-        </section>
-
-        <section class="game-schedule">
-          <div class="game-date">April 14, 2024</div>
-          <div class="teams">
-            <img src="../IMG/Union.png" alt="76ers" class="team-logo">
-            <span>PHI vs <img src="../IMG/Atlanta.png" alt="LAL" class="team-logo"> ATU</span>
-          </div>
-          <div class="location">Away</div>
-        </section>
-
-        <section class="game-schedule">
-          <div class="game-date">April 13, 2024</div>
-          <div class="teams">
-            <img src="../IMG/Flyers.png" alt="76ers" class="team-logo">
-            <span>PHI vs <img src="Devils.svg" alt="LAC" class="team-logo"> DVL</span>
-          </div>
-          <div class="location">Home</div>
-        </section>
-      </div>
-
 
     </body>
 
@@ -300,7 +276,7 @@
 <!-- Styled the "About Us" section similar to other sections -->
 <section class="event" style="background-color: rgba(242, 242, 242, 0.5); padding: 20px;">
   <div class="main-content">
-    <h2>About Us</h2>
+    <h2 id="G">About Us</h2>
     <p>Learn more about our organization and our mission to celebrate Philadelphia's sports legacy.</p>
     <p>We are passionate about preserving and sharing the rich history of sports in Philadelphia. Our organization was
       founded with the goal of honoring the achievements, stories, and iconic moments that have shaped the city's
@@ -367,6 +343,56 @@
             <!-- Add similar sections for other events with images -->
 
         </div>
+    </div>
+
+    <div class="history">
+      <h2>Top Coaches</h2>
+      <img id="Lock" src="https://www.inquirer.com/resizer/DZwQIRYgxfvMx5TIon8AESWWOI8=/760x507/smart/filters:format(webp)/arc-anglerfish-arc2-prod-pmn.s3.amazonaws.com/public/B7XOOUZCVJFBBM2HDCQ4LQHRKA.jpg" alt="billy boi">
+      <div class="text">
+      <p>Billy Cunningham's association with the Philadelphia 76ers is a significant chapter in both his playing and coaching careers. As a player, Cunningham was drafted by the 76ers in 1965 and quickly became an integral part of the team. He was known for his high-energy play and acrobatic leaps, which not only thrilled fans but also made him a formidable competitor on the court. Cunningham contributed to the 76ers' 1967 NBA Championship team, which is celebrated for having one of the best single-season records in NBA history at that time.
+
+        After retiring as a player due to injuries in 1976, Cunningham transitioned to coaching, taking over as the head coach of the 76ers in 1977. His tenure as coach marked one of the most successful periods in the franchise's history. Cunningham had a knack for melding diverse talents into a cohesive unit, leading the team with a deep understanding of both strategy and player motivation.
+
+        Under Cunningham’s leadership, the 76ers flourished, consistently performing as one of the top teams in the league. His coaching highlights include leading the team to the NBA Finals three times (1977, 1980, 1982). The pinnacle of his coaching career came in 1983, when he coached the 76ers to a dominant NBA Championship win, with the team losing only one playoff game that season—a record at the time.
+
+        His coaching style, characterized by a blend of disciplined defensive strategies and a fast-paced offense, not only redefined the 76ers' playstyle but also left a lasting impact on the team. Cunningham’s ability to manage star players like Julius Erving and Moses Malone was pivotal in harnessing their talents towards team success.
+
+        Billy Cunningham ended his coaching career with the 76ers in 1985. His legacy with the team is not just as one of its greatest players, but also as its most successful coach, holding the highest winning percentage of any coach in team history at the time of his retirement. His influence on the team and the game of basketball remains profound, making him a legendary figure in 76ers history and a member of the Basketball Hall of Fame.
+</p>
+       
+        
+        <img id="Money" src="https://s.hdnux.com/photos/71/05/61/14965825/6/rawImage.jpg" alt="Dick Vermeil">
+        
+        <p id = "Cash"> Dick Vermeil's time with the Philadelphia Eagles is marked by significant achievements and a lasting impact on the franchise. Hired in 1976, Vermeil took over a struggling team and transformed it into a competitive force in the NFL.
+
+        One of Vermeil's greatest achievements with the Eagles was leading the team to its first Super Bowl appearance in the 1980 season. Under his guidance, the Eagles compiled a remarkable 12-4 regular-season record, securing the NFC East title. Vermeil's coaching prowess was evident as he instilled discipline, determination, and a winning mentality within the team.
+
+        During his tenure, Vermeil's coaching style emphasized hard work, dedication, and attention to detail. He was known for his meticulous preparation and ability to motivate his players to perform at their best. Vermeil's hands-on approach and genuine care for his team earned him the respect and admiration of his players and fans alike.
+
+        One of the hallmarks of Vermeil's coaching tenure was his ability to develop talent and maximize the potential of his players. He helped nurture stars such as quarterback Ron Jaworski, wide receiver Harold Carmichael, and linebacker Bill Bergey, among others, turning them into key contributors for the team.
+
+        Beyond his on-field success, Vermeil's impact extended to the community and the organization as a whole. He was known for his involvement in charitable endeavors and his commitment to making a positive difference in the lives of others.
+
+        Despite ultimately falling short in the Super Bowl against the Oakland Raiders, Vermeil's legacy with the Eagles remains enduring. His tenure laid the foundation for future success and set a standard of excellence for the franchise. Vermeil's passion, dedication, and leadership continue to inspire generations of Eagles fans and serve as a reminder of the team's storied history.
+
+</p>
+        <img id="We" src= "https://hockeygods.com/system/gallery_images/15089/original.jpg?1491066472" alt="Fred Shero">
+        <p id="Tedds">
+          Fred Shero's tenure with the Philadelphia Flyers, spanning from 1971 to 1978, is one of the most distinguished coaching periods in NHL history. He revolutionized the team and had a profound impact on hockey coaching.
+
+          Coaching Philosophy and Innovations
+          Shero was known for his forward-thinking coaching style. He introduced morning skates to boost game-day sharpness, a practice that was revolutionary at the time but is now standard across the league. His approach to game preparation also included the extensive use of video analysis, which allowed players to review their performances and learn from their mistakes as well as scout their opponents more effectively.
+
+          Strategic Mastery
+          Shero's strategic acumen was evident in his deployment of the Flyers. He implemented a system-based approach that emphasized strong defensive play paired with aggressive physical engagement. This strategy not only leveraged the natural toughness of his roster but also fostered a team identity that intimidated opponents. His coaching was instrumental in developing the Flyers into a cohesive unit that could dominate both physically and tactically.
+
+          Achievements and Legacy
+          Under Shero's leadership, the Flyers reached their peak by winning the Stanley Cup in 1974 and 1975—their first championships since joining the NHL in 1967. These victories were particularly significant as they broke the dominance of the Original Six teams. Shero's Flyers were the first post-1967 expansion team to win the Cup, and they did so with a style so distinct that it left a lasting mark on the league.
+
+          Shero's impact extended beyond tactics and gameplay. He was known for his psychological insights and motivational techniques, famously using succinct, impactful messages to inspire his team. His approach to building a team's mental fortitude was as crucial as his tactical setups.
+
+          After leaving the Flyers, Shero's legacy continued to influence the sport. His innovative practices and strategic approach to hockey have been emulated by many coaches since. His contributions to the game were recognized with his posthumous induction into the Hockey Hall of Fame in 2013, underlining his status as one of the most influential figures in the history of hockey.</p>
+      </div>
     </div>
 
 
@@ -621,6 +647,6 @@
     </div>
 
   </body>
-
+    <script src = script.js></script>
   </html> 
   

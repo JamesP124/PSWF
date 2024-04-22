@@ -20,6 +20,11 @@
         header {
             background-color: rgba(0, 0, 255, 0.5); /* Adjust the transparency by changing the last value */
             padding: 10px 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000; /* Ensure header stays on top */
+            transition: top 0.3s; /* Add smooth transition effect */
         }
 
         nav {
@@ -46,7 +51,7 @@
             padding: 20px;
             width: 80%;
             max-width: 600px; /* Adjust the maximum width as per your requirement */
-            margin: 50px auto; /* Adjust the margin for centering */
+            margin: 130px auto 50px; /* Adjust the margin for centering and to accommodate the fixed header */
         }
 
         h2 {
@@ -67,7 +72,7 @@
         .eagle-image {
             width: 100%; /* Set the width to 100% for responsive images */
             height: auto; /* Maintain aspect ratio */
-            max-width: 500px; /* Set the maximum width */
+            max-width: 600px; /* Set the maximum width */
             display: block; /* Ensure images are displayed as blocks */
             margin: 20px auto; /* Center images horizontally with some spacing */
         }
@@ -85,8 +90,8 @@
             <a href="philadelphia-union.html">Philadelphia Union</a>
             <a href="about.html">About</a>
             <a href="contact.html">Contact Us</a>
-          <a href='https://www.ticketmaster.com/philadelphia-eagles-tickets/artist/805999'">Tickets</a>
-
+            <a href='https://www.ticketmaster.com/philadelphia-eagles-tickets/artist/805999'">Tickets</a>
+           <a href="maps.html">Maps</a>
             <div class="dropdown" id="profile-section" style="display: none;">
                 <a id="profile-username">Username</a>
                 <div class="dropdown-content" id="profile-dropdown">
@@ -138,19 +143,21 @@
         </p>
     </div>
 
-  <footer>
-    <p>&copy; James Pargamanik, Meru Parmar, Rob Workman</p>
-  </footer>
+    <footer>
+        <p>&copy; James Pargamanik, Meru Parmar, Rob Workman</p>
+    </footer>
 
     <script>
-        window.addEventListener('scroll', function() {
-            var copyright = document.getElementById('copyright');
-            if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-                copyright.style.display = 'block';
+        let prevScrollpos = window.pageYOffset;
+        window.onscroll = function() {
+            let currentScrollPos = window.pageYOffset;
+            if (prevScrollpos > currentScrollPos) {
+                document.querySelector("header").style.top = "0";
             } else {
-                copyright.style.display = 'none';
+                document.querySelector("header").style.top = "-50px"; /* Adjust the height of the header to hide the text */
             }
-        });
+            prevScrollpos = currentScrollPos;
+        }
     </script>
 </body>
 

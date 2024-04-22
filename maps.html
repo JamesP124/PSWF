@@ -1,241 +1,88 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <title>Philly Navigation System</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-    <!-- Leaflet CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    
-  <style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Philadelphia Eagles</title>
+    <link rel="stylesheet" href="maps.css"> <!-- Link to maps.css stylesheet -->
+    <style>
         body {
-            font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
         }
-        #map {
-            height: 400px;
-            width: 80%;
-            margin-top: 20px;
-        }
-        #directionsPanel, #trainStatus {
-            width: 80%;
-            margin: 20px 0;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-        }
-        .container {
-            width: 80%;
-            display: flex;
-            justify-content: space-between;
-            margin-top: 20px;
-        }
-        .feature {
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            width: 48%;
-        }
-        .clock {
-            text-align: center;
-            font-size: 24px;
-            margin-top: 20px;
-        }
+
         header {
+            background-color: rgba(0, 0, 255, 0.5);
+            padding: 10px 0;
+            position: fixed;
+            top: 0;
             width: 100%;
-            box-sizing: border-box;
-            background-color: #333;
-            color: #fff;
-            padding: 20px 0;
-            text-align: center;
+            z-index: 1000;
+            transition: top 0.3s;
         }
+
         nav {
-            width: 100%;
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            padding: 10px;
-            overflow-x: auto;
-        }
-        nav a {
-            flex-grow: 1;
             text-align: center;
-            min-width: 120px;
+        }
+
+        nav a, button {
             color: #fff;
             text-decoration: none;
-            padding: 10px;
+            padding: 10px 15px;
+            margin: 0 5px;
             border-radius: 5px;
-            transition: background-color 0.3s;
+            background-color: rgba(0, 0, 255, 0.7);
+            transition: background-color 0.3s ease;
         }
-        nav a:hover {
-            background-color: #555;
+
+        nav a:hover, button:hover {
+            background-color: rgba(0, 0, 255, 0.9);
         }
-        #profile-section {
-            position: relative;
+
+        .map-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 50px;
         }
-        #profile-username {
-            display: inline-block;
-            padding: 8px 12px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        #profile-username:hover {
-            background-color: #f2f2f2;
-        }
-        .dropdown {
-            position: absolute;
-            top: calc(100% + 5px);
-            left: 0;
-            background-color: #fff;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            padding: 10px;
-            display: none;
-            min-width: 120px;
-        }
-        #profile-section:hover .dropdown {
-            display: block;
-        }
-        .dropdown a {
-            display: block;
-            padding: 8px 12px;
-            text-decoration: none;
-            color: #333;
-            transition: background-color 0.3s;
-        }
-        .dropdown a:hover {
-            background-color: #f2f2f2;
+
+        .map-container iframe {
+            width: 600px;
+            height: 450px;
+            border: 0;
         }
     </style>
-  
 </head>
-<body>
 
-  
-  <header>
-        <h1>Philadelphia Sports Navigation System</h1>
+<body>
+    <header>
+        <h1>Philadelphia Eagles</h1>
         <nav>
-            <a href="index.html">Home</a>
-            <a href="about.html">About</a>
-            <a href="#contact">Contact</a>
-            <div id="profile-section">
-                <span id="profile-username" onclick="toggleDropdown()">Username</span>
-                <div class="dropdown" id="profile-dropdown">
-                    <a href="#" onclick="logout()">Log Out</a>
-                    <a href="settings.html">Settings</a>
-                </div>
-            </div>
+            <button onclick="changeMap('https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3060.7884083112576!2d-75.17213492108395!3d39.90136940859948!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c6c7a9e03add31%3A0xf4050036d4293709!2sLincoln%20Financial%20Field!5e0!3m2!1sen!2sus!4v1713741677612!5m2!1sen!2sus')">Eagles</button>
+            <button onclick="changeMap('https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3060.795912676796!2d-75.17659292108395!3d39.901201408599604!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c6c5ec0fe3b147%3A0x529f31b23f45ba2d!2sWells%20Fargo%20Center!5e0!3m2!1sen!2sus!4v1713741805728!5m2!1sen!2sus')">Flyers</button>
+            <button onclick="changeMap('https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3060.795912676796!2d-75.17659292108395!3d39.901201408599604!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c6c5ec0fe3b147%3A0x1a3bd17526b2cc85!2sPhiladelphia%2076ers!5e0!3m2!1sen!2sus!4v1713741826777!5m2!1sen!2sus')">76ers</button>
+            <button onclick="changeMap('https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3063.950737203145!2d-75.38423867440991!3d39.830522171539904!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c6e7aecfa70025%3A0x4a416539cd8695fb!2sSubaru%20Park!5e0!3m2!1sen!2sus!4v1713741886380!5m2!1sen!2sus')">Philadelphia Union</button>
+            <button onclick="changeMap('https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3060.5790035665386!2d-75.17110862108244!3d39.90605710859685!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c6c5ee266feb39%3A0x90212debd7535fa!2sCitizens%20Bank%20Park!5e0!3m2!1sen!2sus!4v1713741944321!5m2!1sen!2sus')">Phillies</button>
         </nav>
     </header>
-  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3060.7884055003256!2d-75.1700964232959!3d39.90136947152711!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c6c7a9e03add31%3A0xf4050036d4293709!2sLincoln%20Financial%20Field!5e0!3m2!1sen!2sus!4v1712321453863!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-  <div id="map"></div>
-  <div id="directionsPanel">Directions will appear here.</div>
-  <div id="trainStatus">Train statuses will be shown here.</div>
-  <div class="container">
-      <div class="feature">
-          Select a stadium:
-          <select id="stadiumSelect" onchange="lookupAddress()">
-              <option value="One Lincoln Financial Field Way, Philadelphia, PA 19148">Eagles - Lincoln Financial Field</option>
-              <option value="1 Citizens Bank Way, Philadelphia, PA 19148">Phillies - Citizens Bank Park</option>
-              <option value="3601 S Broad St, Philadelphia, PA 19148">76ers and Flyers - Wells Fargo Center</option>
-          </select>
-      </div>
-      <div class="feature">
-          Enter your address if location is unavailable:
-          <input type="text" id="addressInput" placeholder="1234 Main St, Philadelphia, PA">
-          <button onclick="lookupAddress(document.getElementById('addressInput').value)">Go</button>
-      </div>
-      <div class="feature clock" id="clock">00:00:00</div>
-  </div>
 
-    <!-- Leaflet JS -->
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-         crossorigin=""></script>
+    <main>
+        <div class="map-container">
+            <iframe id="mapFrame" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d97616.71623912561!2d-75.58508073749998!3d40.1306462!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c69142fb2de645%3A0x74e5bfca366666d7!2sTarget!5e0!3m2!1sen!2sus!4v1713740914994!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; James Pargamanik, Meru Parmar, Rob Workman</p>
+    </footer>
+
     <script>
-        function updateClock() {
-            const now = new Date();
-            document.getElementById('clock').innerHTML = now.toLocaleTimeString();
-        }
-        setInterval(updateClock, 1000);
-        updateClock(); // Initialize clock immediately
-
-        // Initialize Leaflet map
-        var map;
-        function initMap() {
-            map = L.map('map').setView([39.9526, -75.1652], 13);
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            }).addTo(map);
-
-            // Try to use the device's location
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(function(position) {
-                    var userLocation = [position.coords.latitude, position.coords.longitude];
-                    setMap(userLocation);
-                }, function() {
-                    // If location access is denied or unavailable, use a default
-                    setMap([39.9526, -75.1652]); // Default to Philadelphia's coordinates
-                });
-            } else {
-                // If Geolocation is not supported by the browser, use a default
-                setMap([39.9526, -75.1652]); // Default to Philadelphia's coordinates
-            }
-        }
-
-        function setMap(coords) {
-            map.setView(coords, 13);
-            var marker = L.marker(coords).addTo(map);
-            marker.bindPopup("Your location").openPopup();
-        }
-
-        // Functionality for address input
-        function addressEntered() {
-            var address = document.getElementById('addressInput').value;
-            getCoordinatesForAddress(address);
-        }
-
-        function getCoordinatesForAddress(address) {
-            var url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address)}`;
-
-            fetch(url, {
-                method: 'GET',
-                headers: {
-                    'User-Agent': 'YourAppName/1.0 (YourContactEmailAddress)',
-                    'Accept': 'application/json'
-                }
-            })
-            .then(response => response.json())
-            .then(data => {
-                if(data.length > 0) {
-                    var coords = [parseFloat(data[0].lat), parseFloat(data[0].lon)];
-                    setMap(coords);
-                } else {
-                    alert('Address not found.');
-                }
-            })
-            .catch(error => console.error('Error fetching data:', error));
-        }
-
-        document.addEventListener('DOMContentLoaded', function() {
-            initMap();
-        });
-
-        // Toggle and Logout functions unchanged
-        var profileDropdown = document.getElementById('profile-dropdown');
-        function toggleDropdown() {
-            profileDropdown.style.display = (profileDropdown.style.display === 'block') ? 'none' : 'block';
-        }
-
-        function logout() {
-            alert('Logged out successfully!');
-            profileDropdown.style.display = 'none';
+        function changeMap(mapUrl) {
+            document.getElementById('mapFrame').src = mapUrl;
         }
     </script>
 </body>
+
 </html>

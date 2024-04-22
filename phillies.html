@@ -22,6 +22,11 @@
       color: #fff;
       text-align: center;
       padding: 20px 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      transition: top 0.3s; /* Add smooth transition */
     }
     nav {
       display: flex;
@@ -69,33 +74,31 @@
       display: inline-block;
     }
     footer {
-      position: fixed; /* Make the footer fixed */
-      bottom: 0; /* Stick it to the bottom */
       background-color: #333;
       color: #fff;
       text-align: center;
       padding: 20px 0;
       width: 100%; /* Ensure it takes full width */
-      display: none; /* Initially hide the footer */
     }
-    .description {
-      background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent white */
-      border-radius: 15px; /* Rounded corners */
-      padding: 20px;
-      width: 80%;
-      max-width: 600px; /* Adjust the maximum width as per your requirement */
-      margin: 50px auto; /* Center the box */
+    .transparent-box {
+        background-color: rgba(255, 255, 255, 0.7); /* Adjust the transparency by changing the last value */
+        border-radius: 15px; /* Adjust the border-radius to control the roundness of the edges */
+        padding: 20px;
+        width: 80%;
+        max-width: 600px; /* Adjust the maximum width as per your requirement */
+        margin: 50px auto; /* Adjust the margin for centering */
     }
-    .description img {
-      width: 100%; /* Set the image width to fill its container */
-      height: auto; /* Maintain aspect ratio */
-      border-radius: 10px; /* Rounded corners for images */
-      margin-top: 20px; /* Add spacing between images */
+    .Phillies-image {
+        width: 100%; /* Set the width to 100% for responsive images */
+        height: auto; /* Maintain aspect ratio */
+        max-width: 600px; /* Set the maximum width */
+        display: block; /* Ensure images are displayed as blocks */
+        margin: 20px auto; /* Center images horizontally with some spacing */
     }
   </style>
 </head>
 <body>
-  <header>
+  <header id="header">
     <h1>Philadelphia Phillies</h1>
     <nav>
       <a href="index.html">Home</a>
@@ -106,6 +109,7 @@
       <a href="about.html">About</a>
       <a href="contact.html">Contact Us</a>
       <a href='https://www.ticketmaster.com/philadelphia-phillies-tickets/artist/806001'">Tickets</a>
+       <a href="maps.html">Maps</a>
       <!-- Dropdown for profile and logout -->
       <div class="dropdown" id="profile-section" style="display: none;">
         <a href="javascript:void(0)" id="profile-username">Profile</a>
@@ -118,7 +122,7 @@
     </nav>
   </header>
 
-  <div class="description">
+  <div class="transparent-box">
     <h2>The Philadelphia Phillies' Thrilling Journey</h2>
     <p>In the heart of the City of Brotherly Love, where the echoes of baseball's past champions reverberate through the streets, the Philadelphia Phillies embarked on a captivating odyssey in the most recent MLB season. With bats in hand and hearts afire, they navigated the highs and lows of America's favorite pastime, leaving fans on the edge of their seats and etching their names into the annals of baseball lore.
 
@@ -128,24 +132,24 @@
     Dynamic Offense:
     Led by the thunderous swings of slugger Bryce Harper, the Phillies' offense electrified stadiums across the nation. Harper, with his MVP-caliber performance, captivated audiences with towering home runs and clutch hits, solidifying his status as the cornerstone of the team's lineup. His leadership and unwavering passion fueled the Phillies' offensive onslaught, inspiring teammates and striking fear into the hearts of opposing pitchers.
 
-   
-      <a href="https://cdn.theathletic.com/app/uploads/2023/03/27225832/GettyImages-1244182704-scaled.jpg" target="_blank"><img src="https://cdn.theathletic.com/app/uploads/2023/03/27225832/GettyImages-1244182704-scaled.jpg" alt="Bryce Harper unleashing a powerful swing, sending a baseball soaring into the stands"></a>
+
+      <a href="https://cdn.theathletic.com/app/uploads/2023/03/27225832/GettyImages-1244182704-scaled.jpg" target="_blank"><img src="https://cdn.theathletic.com/app/uploads/2023/03/27225832/GettyImages-1244182704-scaled.jpg" alt="Bryce Harper unleashing a powerful swing, sending a baseball soaring into the stands" class="Phillies-image"></a>
 
     Alongside Harper, a cast of talented hitters contributed to the Phillies' offensive firepower. From the speedster Jean Segura igniting rallies at the top of the lineup to the veteran presence of Andrew McCutchen providing timely hits, each player played a vital role in the team's quest for victory. Together, they formed a formidable lineup capable of overwhelming even the most elite pitching staffs.
 
     Dominant Pitching:
     On the mound, the Phillies boasted a pitching staff that struck fear into the hearts of opposing hitters. Ace pitcher Aaron Nola dazzled with his pinpoint accuracy and devastating breaking pitches, anchoring the rotation with his Cy Young-worthy performances. His ability to shut down opposing offenses instilled confidence in the team and provided a foundation for success.
 
-    
-      <a href="https://www.si.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cq_auto:good%2Cw_1200/MTkwOTg1OTcyMzY2NzE0MjIy/usatsi_18709228-1.jpg" target="_blank"><img src="https://www.si.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cq_auto:good%2Cw_1200/MTkwOTg1OTcyMzY2NzE0MjIy/usatsi_18709228-1.jpg" alt="Aaron Nola delivering a blistering fastball, freezing a batter at the plate"></a>
+
+      <a href="https://www.si.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cq_auto:good%2Cw_1200/MTkwOTg1OTcyMzY2NzE0MjIy/usatsi_18709228-1.jpg" target="_blank"><img src="https://www.si.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cq_auto:good%2Cw_1200/MTkwOTg1OTcyMzY2NzE0MjIy/usatsi_18709228-1.jpg" alt="Aaron Nola delivering a blistering fastball, freezing a batter at the plate" class="Phillies-image"></a>
 
     Complementing Nola were a cadre of talented arms, including Zack Wheeler and Ranger Suárez, who showcased their prowess with dominant outings and clutch performances. Whether stifling potent lineups with strikeouts or inducing ground ball double plays in crucial situations, the Phillies' pitching staff emerged as a force to be reckoned with, propelling the team to victory time and time again.
 
     Rising Stars and Breakout Performances:
     While seasoned veterans led the charge, the Phillies also witnessed the emergence of rising stars and breakout performers who left an indelible mark on the season. Rookie sensation Alec Bohm dazzled with his smooth swing and clutch hits, earning accolades and admiration from fans and pundits alike. His seamless transition to the big leagues signaled a bright future for the Phillies and added depth to their potent lineup.
 
-   
-      <a href="https://www.inquirer.com/resizer/sDnsxiopbUjC4jPnNfwJFE-KJb8=/760x507/smart/filters:format(webp)/cloudfront-us-east-1.images.arcpublishing.com/pmn/K4WVQDDIURDLXJS5KZW7Y4DT3M.jpg" target="_blank"><img src="https://www.inquirer.com/resizer/sDnsxiopbUjC4jPnNfwJFE-KJb8=/760x507/smart/filters:format(webp)/cloudfront-us-east-1.images.arcpublishing.com/pmn/K4WVQDDIURDLXJS5KZW7Y4DT3M.jpg" alt="Alec Bohm rounding the bases after a game-winning home run"></a>
+
+      <a href="https://www.inquirer.com/resizer/sDnsxiopbUjC4jPnNfwJFE-KJb8=/760x507/smart/filters:format(webp)/cloudfront-us-east-1.images.arcpublishing.com/pmn/K4WVQDDIURDLXJS5KZW7Y4DT3M.jpg" target="_blank"><img src="https://www.inquirer.com/resizer/sDnsxiopbUjC4jPnNfwJFE-KJb8=/760x507/smart/filters:format(webp)/cloudfront-us-east-1.images.arcpublishing.com/pmn/K4WVQDDIURDLXJS5KZW7Y4DT3M.jpg" alt="Alec Bohm rounding the bases after a game-winning home run" class="Phillies-image"></a>
 
     In the bullpen, flamethrower José Alvarado emerged as a fan favorite with his electric stuff and fiery demeanor on the mound. His ability to shut down opposing hitters in high-pressure situations provided a spark of energy to the team and solidified his role as a key contributor in the Phillies' bullpen.
 
@@ -155,7 +159,7 @@
     One such moment came in a pivotal divisional matchup against their arch-rivals, the Atlanta Braves. Trailing by multiple runs late in the game, the Phillies staged a miraculous comeback, capped off by a walk-off home run from Bryce Harper that ignited pandemonium in the stands and solidified their status as contenders in the National League.
 
 
-      <a href="https://www.si.com/.image/t_share/MTkxMDc3Nzc0MzM5ODc2MjA2/usatsi_18542253.jpg" target="_blank"><img src="https://www.si.com/.image/t_share/MTkxMDc3Nzc0MzM5ODc2MjA2/usatsi_18542253.jpg" alt="Phillies players mobbing Bryce Harper at home plate after his walk-off home run"></a>
+      <a href="https://www.si.com/.image/t_share/MTkxMDc3Nzc0MzM5ODc2MjA2/usatsi_18542253.jpg" target="_blank"><img src="https://www.si.com/.image/t_share/MTkxMDc3Nzc0MzM5ODc2MjA2/usatsi_18542253.jpg" alt="Phillies players mobbing Bryce Harper at home plate after his walk-off home run" class="Phillies-image"></a>
 
     Looking Ahead:
     As the dust settles on a season filled with triumphs and tribulations, the Philadelphia Phillies stand poised on the precipice of greatness. With a talented roster, a visionary coaching staff, and an unwavering commitment to excellence, they are primed to write the next chapter in their storied franchise history. For Phillies fans worldwide, the future is as bright as the gleaming diamond under the lights, a beacon of hope and pride in the City of Brotherly Love.
@@ -163,19 +167,28 @@
    </p>
   </div>
 
+
   <footer id="copyright">
     <p>&copy; James Pargamanik, Meru Parmar, Rob Workman</p>
   </footer>
 
   <script>
-      window.addEventListener('scroll', function() {
-          var copyright = document.getElementById('copyright');
-          if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-              copyright.style.display = 'block';
-          } else {
-              copyright.style.display = 'none';
-          }
-      });
+    var lastScrollTop = 0;
+    var header = document.getElementById("header");
+
+    window.addEventListener("scroll", function() {
+      var currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+
+      if (currentScroll > lastScrollTop) {
+        // Scroll down
+        header.style.top = "-100px"; // Hide the header
+      } else {
+        // Scroll up
+        header.style.top = "0"; // Show the header
+      }
+
+      lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // For Mobile or negative scrolling
+    });
   </script>
 </body>
 </html>

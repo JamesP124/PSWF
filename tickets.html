@@ -21,16 +21,23 @@
     }
 
     body {
-        margin: 0;
-        padding: 0;
-        background-image: url('ticket.png');
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
+      margin: 0;
+      padding: 0;
+      background-image: url('ticketpeople.png');
+      background-repeat: no-repeat;
+      background-attachment: fixed;
     }
 
     footer.show {
       opacity: 1;
+    }
+
+    /* Media queries for different screen sizes */
+    @media screen and (max-width: 768px) {
+      body {
+        background-size: contain;
+        background-position: center;
+      }
     }
   </style>
 </head>

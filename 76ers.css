@@ -126,3 +126,8 @@ body {
     background-position: center center; /* Center the background image */
   background-attachment: fixed;
 }
+.image-container {
+    text-align: center; /* Center the image horizontally */
+    margin-bottom: 20px; /* Add some space between images */
+}
+
